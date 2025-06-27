@@ -1,0 +1,76 @@
+﻿<Window x:Class="Chatbot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cybersecurity Awareness Chatbot" Height="600" Width="800"
+        Background="#1E1E1E" Foreground="White" FontFamily="Segoe UI">
+    <Grid>
+        <TabControl>
+            <!-- Chat Tab -->
+            <TabItem Header="Chat Assistant">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Chat with your Cybersecurity Bot!" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBox x:Name="ChatDisplayTextBox" Grid.Row="1" Margin="0,0,0,10" AcceptsReturn="True" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Background="Black" Foreground="White"/>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <TextBox x:Name="ChatInputTextBox" Width="600" Height="30" Margin="0,0,10,0" Text="Type your message here..."
+                                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                        <Button x:Name="ChatSendButton" Content="Send" Width="100" Click="ChatSendButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Task Assistant Tab -->
+            <TabItem Header="Task Assistant">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Manage Your Tasks" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBox x:Name="TaskTitleTextBox" Text="Task Title" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0,5"/>
+                    <TextBox x:Name="TaskDescriptionTextBox" Text="Task Description (optional)" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0,5"/>
+                    <DatePicker x:Name="ReminderDatePicker" Margin="0,5" />
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Button x:Name="AddTaskButton" Content="Add Task" Click="AddTaskButton_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="CompleteTaskButton" Content="Complete Task" Click="CompleteTaskButton_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="DeleteTaskButton" Content="Delete Task" Click="DeleteTaskButton_Click"/>
+                    </StackPanel>
+                    <ListBox x:Name="TaskListBox" Height="200" Background="Black" Foreground="White"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Quiz Tab -->
+            <TabItem Header="Cybersecurity Quiz">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Test Your Cybersecurity Knowledge!" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <Button x:Name="StartQuizButton" Content="Start Quiz" Click="StartQuizButton_Click" Background="#2196F3" Foreground="White" Width="120"/>
+
+                    <StackPanel x:Name="QuizQuestionGrid" Margin="0,15,0,0" Visibility="Collapsed">
+                        <TextBlock x:Name="QuizQuestionTextBlock" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                        <StackPanel>
+                            <RadioButton x:Name="QuizOptionARadio" GroupName="QuizOptions" Content="Option A"/>
+                            <RadioButton x:Name="QuizOptionBRadio" GroupName="QuizOptions" Content="Option B"/>
+                            <RadioButton x:Name="QuizOptionCRadio" GroupName="QuizOptions" Content="Option C"/>
+                        </StackPanel>
+
+                        <Button x:Name="SubmitAnswerButton" Content="Submit Answer" Click="SubmitAnswerButton_Click" Background="#4CAF50" Foreground="White" Margin="0,15,0,0" Width="150" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="QuizFeedbackTextBlock" FontSize="14" FontWeight="Bold" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="QuizResultTextBlock" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Activity Log Tab -->
+            <TabItem Header="Activity Log">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Recent Actions and Events" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <ListBox x:Name="ActivityLogListBox" Height="400" Background="Black" Foreground="White"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
